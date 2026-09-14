@@ -3574,6 +3574,282 @@
   }
 </style>
 
+
+<style id="guest-group-floating-fix">
+  /* The guest category menu is moved to body while open, so panel overflow
+     and rounded-card clipping can never cut off lower categories. */
+  .guest-group-menu.guest-group-menu-floating{
+    position:fixed!important;
+    left:auto;
+    right:auto;
+    top:auto;
+    z-index:210!important;
+    min-width:220px;
+    max-width:min(420px,calc(100vw - 20px));
+    max-height:min(330px,calc(100vh - 20px))!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    overscroll-behavior:contain;
+    scrollbar-width:thin;
+    scrollbar-color:color-mix(in srgb,var(--muted) 46%,transparent) transparent;
+  }
+  .guest-group-menu.guest-group-menu-floating::-webkit-scrollbar{
+    width:8px;
+  }
+  .guest-group-menu.guest-group-menu-floating::-webkit-scrollbar-track{
+    background:transparent;
+  }
+  .guest-group-menu.guest-group-menu-floating::-webkit-scrollbar-thumb{
+    background:color-mix(in srgb,var(--muted) 34%,transparent);
+    border:2px solid transparent;
+    border-radius:999px;
+    background-clip:padding-box;
+  }
+  .guest-group-menu.guest-group-menu-floating::-webkit-scrollbar-thumb:hover{
+    background:color-mix(in srgb,var(--muted) 52%,transparent);
+    border:2px solid transparent;
+    background-clip:padding-box;
+  }
+</style>
+
+
+<style id="feedback-name-v12">
+  .feedback-name-field{
+    display:block;
+    margin-top:16px;
+  }
+  .feedback-name-field>span{
+    display:block;
+    margin-bottom:8px;
+    color:var(--muted);
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:.015em;
+  }
+  .feedback-name-field input{
+    width:100%;
+    height:42px;
+    padding:0 13px;
+    border:1px solid var(--line);
+    border-radius:13px;
+    background:var(--surface-2);
+    color:var(--ink);
+    font:inherit;
+    font-size:12px;
+    outline:0;
+  }
+  .feedback-name-field input::placeholder{
+    color:color-mix(in srgb,var(--muted) 72%,transparent);
+  }
+  .feedback-name-field input:focus{
+    border-color:color-mix(in srgb,var(--accent) 55%,var(--line));
+    box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 48%,transparent);
+  }
+  .feedback-name-field input[aria-invalid="true"]{
+    border-color:#d85a43;
+    box-shadow:inset 0 0 0 1px color-mix(in srgb,#d85a43 48%,transparent);
+  }
+</style>
+
+
+<style id="patchnotes-v12">
+  .patchnotes-start-button{
+    color:var(--ink);
+  }
+  .patchnotes-start-button:hover{
+    color:var(--accent);
+  }
+  .patchnotes-dialog{
+    width:min(430px,calc(100vw - 32px));
+  }
+  .patchnotes-version{
+    display:inline-flex;
+    align-items:center;
+    min-height:25px;
+    margin-top:12px;
+    padding:0 9px;
+    border:1px solid color-mix(in srgb,var(--accent) 17%,var(--line));
+    border-radius:999px;
+    background:color-mix(in srgb,var(--accent) 6%,var(--surface-2));
+    color:var(--accent);
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:.04em;
+  }
+  .patchnotes-list{
+    display:grid;
+    gap:0;
+    margin-top:14px;
+  }
+  .patchnotes-item{
+    display:grid;
+    grid-template-columns:10px 1fr;
+    gap:10px;
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .patchnotes-item:last-child{
+    border-bottom:0;
+  }
+  .patchnotes-dot{
+    width:6px;
+    height:6px;
+    margin-top:6px;
+    border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 8%,transparent);
+  }
+  .patchnotes-item p{
+    margin:0;
+    color:var(--muted);
+    font-size:10.5px;
+    line-height:1.45;
+  }
+  .patchnotes-item strong{
+    color:var(--ink);
+    font-size:11px;
+    font-weight:750;
+  }
+  .patchnotes-ok{
+    width:100%;
+    min-height:39px;
+    margin-top:13px;
+    border:0;
+    border-radius:13px;
+    background:var(--accent);
+    color:#fff;
+    font-size:11px;
+    font-weight:750;
+  }
+  .patchnotes-ok:hover{
+    filter:brightness(.97);
+  }
+  @media(max-width:830px){
+    .patchnotes-start-button span{display:none!important}
+  }
+</style>
+
+
+<style id="patchnotes-scrollfix-v12">
+  /* Патчноут — единая карточка. Скроллится только список изменений внутри. */
+  .patchnotes-dialog{
+    overflow:hidden!important;
+    display:flex;
+    flex-direction:column;
+    max-height:min(690px,calc(100vh - 48px));
+  }
+
+  .patchnotes-dialog .help-dialog-head,
+  .patchnotes-dialog .patchnotes-version,
+  .patchnotes-dialog .patchnotes-ok{
+    flex:0 0 auto;
+  }
+
+  .patchnotes-list{
+    min-height:0;
+    overflow-y:auto;
+    overflow-x:hidden;
+    overscroll-behavior:contain;
+    margin-right:-4px;
+    padding-right:8px;
+    scrollbar-width:thin;
+    scrollbar-color:color-mix(in srgb,var(--muted) 28%,transparent) transparent;
+  }
+
+  .patchnotes-list::-webkit-scrollbar{
+    width:5px;
+  }
+  .patchnotes-list::-webkit-scrollbar-track{
+    background:transparent;
+  }
+  .patchnotes-list::-webkit-scrollbar-thumb{
+    border-radius:999px;
+    background:color-mix(in srgb,var(--muted) 25%,transparent);
+  }
+  .patchnotes-list::-webkit-scrollbar-thumb:hover{
+    background:color-mix(in srgb,var(--muted) 42%,transparent);
+  }
+
+  @media(max-width:620px){
+    .patchnotes-dialog{
+      max-height:82vh!important;
+    }
+  }
+</style>
+
+
+<style id="feedback-scrollfix-0-9-1">
+  .feedback-dialog{
+    overflow:hidden!important;
+    display:flex;
+    flex-direction:column;
+    max-height:min(720px,calc(100vh - 48px));
+  }
+
+  .feedback-dialog-head{
+    flex:0 0 auto;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--line);
+  }
+
+  .feedback-dialog #feedback-form{
+    min-height:0;
+    flex:1 1 auto;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .feedback-scroll-body{
+    min-height:0;
+    flex:1 1 auto;
+    overflow-y:auto;
+    overflow-x:hidden;
+    overscroll-behavior:contain;
+    padding:14px 8px 4px 0;
+    margin-right:-4px;
+    scrollbar-width:thin;
+    scrollbar-color:color-mix(in srgb,var(--muted) 28%,transparent) transparent;
+  }
+
+  .feedback-scroll-body::-webkit-scrollbar{
+    width:5px;
+  }
+  .feedback-scroll-body::-webkit-scrollbar-track{
+    background:transparent;
+  }
+  .feedback-scroll-body::-webkit-scrollbar-thumb{
+    border-radius:999px;
+    background:color-mix(in srgb,var(--muted) 25%,transparent);
+  }
+  .feedback-scroll-body::-webkit-scrollbar-thumb:hover{
+    background:color-mix(in srgb,var(--muted) 42%,transparent);
+  }
+
+  .feedback-scroll-body>.help-intro{
+    margin-top:0;
+  }
+
+  .feedback-footer{
+    flex:0 0 auto;
+    margin-top:10px!important;
+    padding-top:14px!important;
+    background:var(--paper);
+  }
+
+  :root[data-theme="dark"] .feedback-footer{
+    background:var(--paper);
+  }
+
+  @media(max-width:620px){
+    .feedback-dialog{
+      max-height:82vh!important;
+    }
+    .feedback-scroll-body{
+      padding-right:6px;
+    }
+  }
+</style>
+
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;overflow:hidden">
@@ -3617,6 +3893,7 @@
       <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></symbol>
       <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20 8.5C20 15 12 20 12 20S4 15 4 8.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 2.5Z"/></symbol>
       <symbol id="i-message" viewBox="0 0 24 24"><path d="M5 5.5h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-7l-4.5 3v-3H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2Z"/><path d="M7.5 9.5h9M7.5 12.5h6"/></symbol>
+      <symbol id="i-spark-note" viewBox="0 0 24 24"><path d="M12 3.5 13.6 8l4.4 1.6-4.4 1.6L12 15.7l-1.6-4.5L6 9.6 10.4 8 12 3.5Z"/><path d="M18.2 14.2 19 16.5l2.3.8-2.3.8-.8 2.3-.8-2.3-2.3-.8 2.3-.8.8-2.3Z"/></symbol>
       <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 6h13a2 2 0 0 1 2 2v10H4V6Z"/><path d="M4 9h16v6h-5a3 3 0 0 1 0-6h5M15 12h.01"/></symbol>
       <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3 1.4 4.1L17.5 8.5l-4.1 1.4L12 14l-1.4-4.1-4.1-1.4 4.1-1.4L12 3ZM19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14ZM5 15l.7 1.8 1.8.7-1.8.7L5 20l-.7-1.8-1.8-.7 1.8-.7L5 15Z"/></symbol>
       <symbol id="i-balloon" viewBox="0 0 24 24"><path d="M12 3a5 6 0 0 1 5 6c0 4-2.2 6.5-5 7-2.8-.5-5-3-5-7a5 6 0 0 1 5-6Z"/><path d="m10 16 2 2 2-2M12 18c0 2-2 2-2 4"/></symbol>
@@ -3662,6 +3939,7 @@
         <div class="save-state" id="save-state"><span class="save-dot"></span><span>Сохранено</span></div>
         <button class="help-trigger" type="button" data-help="topbar" aria-label="Как работает верхняя панель" title="Как работает этот блок"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg></button>
         <button class="tool-button demo-start-button" id="demo-start-button" type="button" title="Пройти короткое демо" aria-label="Пройти короткое демо"><svg class="icon"><use href="#i-play"/></svg><span>Демо</span></button>
+        <button class="tool-button patchnotes-start-button" id="patchnotes-start-button" type="button" title="Что нового" aria-label="Что нового"><svg class="icon"><use href="#i-spark-note"/></svg><span>Что нового</span></button>
         <button class="tool-button feedback-start-button" id="feedback-start-button" type="button" title="Отправить обратную связь" aria-label="Отправить обратную связь"><svg class="icon"><use href="#i-message"/></svg><span>Фидбэк</span></button>
         <button class="tool-button" id="export-button" type="button" title="Экспортировать расчёт в Excel" aria-label="Экспортировать расчёт в Excel"><svg class="icon"><use href="#i-download"/></svg><span>Экспорт</span></button>
         <button class="tool-button" id="import-button" type="button" title="Импортировать расчёт из Excel" aria-label="Импортировать расчёт из Excel"><svg class="icon"><use href="#i-upload"/></svg><span>Импорт</span></button>
@@ -3846,9 +4124,56 @@
       <div class="help-dialog-footer"><button class="help-ok" id="help-ok" type="button">Понятно</button></div>
     </div>
   </div>
+  <div class="help-overlay patchnotes-overlay" id="patchnotes-overlay" hidden>
+    <section class="help-dialog patchnotes-dialog" role="dialog" aria-modal="true" aria-labelledby="patchnotes-title">
+      <div class="help-dialog-head">
+        <div class="help-dialog-heading">
+          <span class="help-dialog-icon"><svg class="icon" aria-hidden="true"><use href="#i-spark-note"/></svg></span>
+          <div><span class="help-kicker">Что нового</span><h3 id="patchnotes-title">Небольшое обновление</h3></div>
+        </div>
+        <button class="help-close" id="patchnotes-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+      </div>
+
+      <div class="patchnotes-version">Текущая сборка · 0.9.1 beta</div>
+
+      <div class="patchnotes-list">
+        <div class="patchnotes-item">
+          <span class="patchnotes-dot"></span>
+          <p><strong>Дополнительные покупки</strong><br>Системная категория для номенклатуры гостей без заранее заданного общего объёма.</p>
+        </div>
+        <div class="patchnotes-item">
+          <span class="patchnotes-dot"></span>
+          <p><strong>Редактируемое название</strong><br>Заголовок праздника теперь можно менять прямо на странице.</p>
+        </div>
+        <div class="patchnotes-item">
+          <span class="patchnotes-dot"></span>
+          <p><strong>Удаление категорий</strong><br>Начальные и новые расходы удаляются через отдельный безопасный режим.</p>
+        </div>
+        <div class="patchnotes-item">
+          <span class="patchnotes-dot"></span>
+          <p><strong>Фидбэк</strong><br>Ошибки и идеи теперь можно отправлять прямо из приложения.</p>
+        </div>
+        <div class="patchnotes-item">
+          <span class="patchnotes-dot"></span>
+          <p><strong>Исправлен список групп</strong><br>Выпадающее меню у гостей больше не должно обрезаться нижней границей блока.</p>
+        </div>
+        <div class="patchnotes-item">
+          <span class="patchnotes-dot"></span>
+          <p><strong>Нормальные версии сборок</strong><br>Перешли с внутренних номеров файлов на понятную нумерацию продукта; текущая ветка — 0.9.x beta.</p>
+        </div>
+        <div class="patchnotes-item">
+          <span class="patchnotes-dot"></span>
+          <p><strong>Аккуратнее окно фидбэка</strong><br>Убрана внешняя системная прокрутка: теперь скроллится только содержимое формы, а шапка и кнопки остаются на месте.</p>
+        </div>
+      </div>
+
+      <button class="patchnotes-ok" id="patchnotes-ok" type="button">Понятно</button>
+    </section>
+  </div>
+
   <div class="help-overlay feedback-overlay" id="feedback-overlay" hidden>
     <section class="help-dialog feedback-dialog" role="dialog" aria-modal="true" aria-labelledby="feedback-title" aria-describedby="feedback-intro">
-      <div class="help-dialog-head">
+      <div class="help-dialog-head feedback-dialog-head">
         <div class="help-dialog-heading">
           <span class="help-dialog-icon"><svg class="icon" aria-hidden="true"><use href="#i-message"/></svg></span>
           <div><span class="help-kicker">Обратная связь</span><h3 id="feedback-title">Помогите сделать лучше</h3></div>
@@ -3856,36 +4181,43 @@
         <button class="help-close" id="feedback-close" type="button" aria-label="Закрыть обратную связь"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
       </div>
 
-      <p class="help-intro" id="feedback-intro">Что-то сломалось, оказалось непонятным или появилась идея? Напишите здесь.</p>
-
-      <div class="feedback-project-note">
-        <span class="feedback-project-note-icon">♥</span>
-        <p>Это пока тестовый проект, поэтому мне правда интересно читать ваши идеи и замечания. Если есть несколько мыслей, постарайтесь собрать их в одно сообщение — так ничего не потеряется и форма не будет забиваться одинаковыми запросами. Спасибо, что помогаете сделать «Повод собраться» лучше 🙂</p>
-      </div>
-
       <form id="feedback-form" novalidate>
-        <fieldset class="feedback-type-fieldset">
-          <legend>Что хотите сообщить?</legend>
-          <div class="feedback-types" role="radiogroup" aria-label="Тип обратной связи">
-            <button class="feedback-type active" type="button" data-feedback-type="Ошибка" aria-pressed="true">Ошибка</button>
-            <button class="feedback-type" type="button" data-feedback-type="Непонятно" aria-pressed="false">Непонятно</button>
-            <button class="feedback-type" type="button" data-feedback-type="Идея" aria-pressed="false">Идея</button>
-            <button class="feedback-type" type="button" data-feedback-type="Другое" aria-pressed="false">Другое</button>
+        <div class="feedback-scroll-body">
+          <p class="help-intro" id="feedback-intro">Что-то сломалось, оказалось непонятным или появилась идея? Напишите здесь.</p>
+
+          <div class="feedback-project-note">
+            <span class="feedback-project-note-icon">♥</span>
+            <p>Это пока тестовый проект, поэтому мне правда интересно читать ваши идеи и замечания. Можно представиться именем или ником — так сообщения чуть человечнее. Если есть несколько мыслей, постарайтесь собрать их в одно сообщение — так ничего не потеряется и форма не будет забиваться одинаковыми запросами. Спасибо, что помогаете сделать «Повод собраться» лучше 🙂</p>
           </div>
-        </fieldset>
 
-        <label class="feedback-message-field" for="feedback-message">
-          <span>Расскажите подробнее</span>
-          <textarea id="feedback-message" rows="6" maxlength="1800" placeholder="Например: в списке покупок непонятно, откуда появилась эта позиция…" required></textarea>
-          <span class="feedback-counter"><b id="feedback-count">0</b> / 1800</span>
-        </label>
+          <fieldset class="feedback-type-fieldset">
+            <legend>Что хотите сообщить?</legend>
+            <div class="feedback-types" role="radiogroup" aria-label="Тип обратной связи">
+              <button class="feedback-type active" type="button" data-feedback-type="Ошибка" aria-pressed="true">Ошибка</button>
+              <button class="feedback-type" type="button" data-feedback-type="Непонятно" aria-pressed="false">Непонятно</button>
+              <button class="feedback-type" type="button" data-feedback-type="Идея" aria-pressed="false">Идея</button>
+              <button class="feedback-type" type="button" data-feedback-type="Другое" aria-pressed="false">Другое</button>
+            </div>
+          </fieldset>
 
-        <div class="feedback-tech-note">
-          <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
-          <span>К сообщению приложится только техническая информация: раздел сайта, тема, браузер и размер окна. Данные праздника не отправляются.</span>
+          <label class="feedback-name-field" for="feedback-name">
+            <span>Имя или ник</span>
+            <input id="feedback-name" type="text" maxlength="60" placeholder="Как к вам обращаться?" autocomplete="name" required>
+          </label>
+
+          <label class="feedback-message-field" for="feedback-message">
+            <span>Расскажите подробнее</span>
+            <textarea id="feedback-message" rows="6" maxlength="1800" placeholder="Например: в списке покупок непонятно, откуда появилась эта позиция…" required></textarea>
+            <span class="feedback-counter"><b id="feedback-count">0</b> / 1800</span>
+          </label>
+
+          <div class="feedback-tech-note">
+            <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+            <span>К сообщению приложится только техническая информация: раздел сайта, тема, браузер и размер окна. Данные праздника не отправляются.</span>
+          </div>
+
+          <div class="feedback-status" id="feedback-status" role="status" aria-live="polite"></div>
         </div>
-
-        <div class="feedback-status" id="feedback-status" role="status" aria-live="polite"></div>
 
         <div class="feedback-footer">
           <button class="feedback-cancel" id="feedback-cancel" type="button">Отмена</button>
@@ -4452,6 +4784,34 @@
       function openHelp(key,trigger){const data=HELP_CONTENT[key];if(!data)return;const overlay=$('help-overlay'),points=$('help-points'),important=$('help-important');helpReturnFocus=trigger||document.activeElement;$('help-dialog-title').textContent=data.title;$('help-dialog-intro').textContent=data.intro;points.replaceChildren();data.points.forEach((point,index)=>{const row=document.createElement('div');row.className='help-point';const titleRow=document.createElement('div');titleRow.className='help-point-title-row';const number=document.createElement('span');number.className='help-point-number';number.textContent=String(index+1).padStart(2,'0');const strong=document.createElement('strong');strong.textContent=point[0];titleRow.append(number,strong);const description=document.createElement('span');description.className='help-point-description';description.textContent=point[1];row.append(titleRow,description);points.append(row);});if(data.important){important.hidden=false;important.querySelector('span').textContent=data.important;}else important.hidden=true;overlay.hidden=false;document.body.classList.add('help-open');requestAnimationFrame(()=>$('help-close').focus());}
       function closeHelp(){const overlay=$('help-overlay');if(overlay.hidden)return;overlay.hidden=true;document.body.classList.remove('help-open');const target=helpReturnFocus;helpReturnFocus=null;if(target&&typeof target.focus==='function')requestAnimationFrame(()=>target.focus());}
 
+
+      let patchnotesReturnFocus=null;
+
+      function openPatchnotes(trigger){
+        if(typeof closeHelp==='function')closeHelp();
+        if(typeof closeFeedback==='function')closeFeedback();
+        if(typeof closeIconPicker==='function')closeIconPicker();
+        if(typeof closeUnitPopover==='function')closeUnitPopover(false);
+        if(typeof closeGuestUnitPopover==='function')closeGuestUnitPopover(false);
+        if(typeof setMobileMenu==='function')setMobileMenu(false);
+
+        patchnotesReturnFocus=trigger||document.activeElement;
+        $('patchnotes-overlay').hidden=false;
+        document.body.classList.add('help-open');
+        requestAnimationFrame(()=>$('patchnotes-ok')?.focus());
+      }
+
+      function closePatchnotes(){
+        const overlay=$('patchnotes-overlay');
+        if(!overlay||overlay.hidden)return;
+        overlay.hidden=true;
+        document.body.classList.remove('help-open');
+        const target=patchnotesReturnFocus;
+        patchnotesReturnFocus=null;
+        if(target&&typeof target.focus==='function')requestAnimationFrame(()=>target.focus());
+      }
+
+      const APP_VERSION='0.9.1-beta';
       const FEEDBACK_ENDPOINT='https://formspree.io/f/xppzgook';
       let feedbackType='Ошибка',feedbackReturnFocus=null,feedbackSending=false;
 
@@ -4471,7 +4831,9 @@
           btn.setAttribute('aria-pressed',String(active));
         });
 
-        const message=$('feedback-message');
+        const name=$('feedback-name'),message=$('feedback-message');
+        name.value='';
+        name.setAttribute('aria-invalid','false');
         message.value='';
         message.setAttribute('aria-invalid','false');
         $('feedback-count').textContent='0';
@@ -4480,7 +4842,7 @@
 
         $('feedback-overlay').hidden=false;
         document.body.classList.add('help-open');
-        requestAnimationFrame(()=>message.focus());
+        requestAnimationFrame(()=>name.focus());
       }
 
       function closeFeedback(){
@@ -4502,7 +4864,7 @@
           viewport:window.innerWidth+'×'+window.innerHeight,
           browser:ua.slice(0,500),
           language:navigator.language||'',
-          app_build:'v12-feedback',
+          app_build:APP_VERSION,
           state_schema:String(state.version||11),
           page:location.origin&&location.origin!=='null'
             ?location.origin+location.pathname
@@ -4512,9 +4874,19 @@
 
       async function submitFeedback(){
         if(feedbackSending)return;
-        const messageEl=$('feedback-message'),
+        const nameEl=$('feedback-name'),
+          messageEl=$('feedback-message'),
+          name=nameEl.value.trim(),
           message=messageEl.value.trim(),
           status=$('feedback-status');
+
+        if(name.length<2){
+          nameEl.setAttribute('aria-invalid','true');
+          status.textContent='Укажите имя или ник.';
+          status.className='feedback-status error';
+          nameEl.focus();
+          return;
+        }
 
         if(message.length<5){
           messageEl.setAttribute('aria-invalid','true');
@@ -4524,6 +4896,7 @@
           return;
         }
 
+        nameEl.setAttribute('aria-invalid','false');
         messageEl.setAttribute('aria-invalid','false');
         feedbackSending=true;
         $('feedback-submit').disabled=true;
@@ -4534,7 +4907,8 @@
         const tech=feedbackTechContext(),
           data=new FormData();
 
-        data.append('_subject','Повод собраться · '+feedbackType);
+        data.append('_subject','Повод собраться · '+feedbackType+' · '+name);
+        data.append('name',name);
         data.append('type',feedbackType);
         data.append('message',message);
         data.append('section',tech.section);
@@ -4562,8 +4936,9 @@
             throw new Error(reason||'HTTP '+response.status);
           }
 
-          status.textContent='Спасибо! Отзыв отправлен.';
+          status.textContent='Спасибо, '+name+'! Отзыв отправлен.';
           status.className='feedback-status success';
+          nameEl.value='';
           messageEl.value='';
           $('feedback-count').textContent='0';
           toast('Спасибо! Фидбэк отправлен');
@@ -4971,26 +5346,112 @@
         let outsideHandler=null;
 
         const selectedExpense=()=>state.expenses.find(e=>e.id===guest.productGroupId);
+        let floatingScrollHandler=null,floatingResizeHandler=null;
+
         const syncGroupTrigger=()=>{
           const selected=selectedExpense();
           group.textContent=selected?selected.name:'Выберите группу';
           group.classList.toggle('placeholder',!selected);
         };
+
+        const cleanupFloatingListeners=()=>{
+          if(floatingScrollHandler){
+            window.removeEventListener('scroll',floatingScrollHandler,true);
+            floatingScrollHandler=null;
+          }
+          if(floatingResizeHandler){
+            window.removeEventListener('resize',floatingResizeHandler);
+            floatingResizeHandler=null;
+          }
+        };
+
+        const positionGroupMenu=()=>{
+          if(groupMenu.hidden||!document.body.contains(groupMenu))return;
+          const rect=group.getBoundingClientRect(),
+            margin=10,
+            gap=7,
+            width=Math.min(
+              Math.max(rect.width,240),
+              Math.max(240,window.innerWidth-margin*2)
+            );
+
+          groupMenu.style.width=Math.round(width)+'px';
+          groupMenu.style.maxHeight=Math.min(330,Math.max(150,window.innerHeight-margin*2))+'px';
+
+          /* Measure after width/max-height are applied. */
+          const menuHeight=groupMenu.getBoundingClientRect().height,
+            roomBelow=window.innerHeight-rect.bottom-margin,
+            roomAbove=rect.top-margin,
+            openUp=roomBelow<Math.min(menuHeight,220)&&roomAbove>roomBelow;
+
+          let left=rect.left;
+          if(left+width>window.innerWidth-margin)left=window.innerWidth-margin-width;
+          left=Math.max(margin,left);
+
+          let top;
+          if(openUp){
+            top=Math.max(margin,rect.top-gap-menuHeight);
+            groupMenu.style.transformOrigin='bottom';
+          }else{
+            top=Math.min(
+              rect.bottom+gap,
+              Math.max(margin,window.innerHeight-margin-menuHeight)
+            );
+            groupMenu.style.transformOrigin='top';
+          }
+
+          groupMenu.style.left=Math.round(left)+'px';
+          groupMenu.style.top=Math.round(top)+'px';
+          groupMenu.style.right='auto';
+        };
+
         const closeGroupMenu=()=>{
           groupMenu.hidden=true;
+          groupMenu.classList.remove('guest-group-menu-floating');
+          groupMenu.style.left='';
+          groupMenu.style.top='';
+          groupMenu.style.right='';
+          groupMenu.style.width='';
+          groupMenu.style.maxHeight='';
+          groupMenu.style.transformOrigin='';
           group.setAttribute('aria-expanded','false');
           groupField.classList.remove('dropdown-open');
+          cleanupFloatingListeners();
           if(outsideHandler){
             document.removeEventListener('pointerdown',outsideHandler,true);
             outsideHandler=null;
           }
+          if(groupMenu.parentNode===document.body)groupMenu.remove();
         };
+
         const openGroupMenu=()=>{
+          /* Close another guest's dropdown first, if one is still open. */
+          document.querySelectorAll('.guest-group-menu-floating').forEach(menu=>{
+            if(menu!==groupMenu)menu.remove();
+          });
+
+          document.body.append(groupMenu);
+          groupMenu.classList.add('guest-group-menu-floating');
           groupMenu.hidden=false;
           group.setAttribute('aria-expanded','true');
           groupField.classList.add('dropdown-open');
-          outsideHandler=ev=>{if(!groupField.contains(ev.target))closeGroupMenu();};
-          requestAnimationFrame(()=>document.addEventListener('pointerdown',outsideHandler,true));
+
+          requestAnimationFrame(()=>{
+            positionGroupMenu();
+            outsideHandler=ev=>{
+              if(!groupField.contains(ev.target)&&!groupMenu.contains(ev.target))closeGroupMenu();
+            };
+            document.addEventListener('pointerdown',outsideHandler,true);
+
+            floatingScrollHandler=ev=>{
+              if(groupMenu.contains(ev.target))return;
+              closeGroupMenu();
+            };
+            floatingResizeHandler=()=>closeGroupMenu();
+
+            window.addEventListener('scroll',floatingScrollHandler,true);
+            window.addEventListener('resize',floatingResizeHandler,{passive:true});
+          });
         };
 
         const optionButtons=[];
@@ -5050,12 +5511,15 @@
         groupMenu.addEventListener('keydown',ev=>{
           const focused=document.activeElement,idx=optionButtons.indexOf(focused);
           if(ev.key==='Escape'){ev.preventDefault();closeGroupMenu();group.focus();}
-          else if(ev.key==='ArrowDown'){ev.preventDefault();optionButtons[Math.min(optionButtons.length-1,idx+1)]?.focus();}
-          else if(ev.key==='ArrowUp'){ev.preventDefault();optionButtons[Math.max(0,idx-1)]?.focus();}
+          else if(ev.key==='ArrowDown'){ev.preventDefault();optionButtons[Math.min(optionButtons.length-1,Math.max(0,idx+1))]?.focus();}
+          else if(ev.key==='ArrowUp'){ev.preventDefault();optionButtons[Math.max(0,idx<=0?0:idx-1)]?.focus();}
+          else if(ev.key==='Home'){ev.preventDefault();optionButtons[0]?.focus();}
+          else if(ev.key==='End'){ev.preventDefault();optionButtons.at(-1)?.focus();}
+          else if(ev.key==='Tab'){closeGroupMenu();}
         });
 
         syncGroupTrigger();
-        groupField.append(groupLabel,group,groupMenu);
+        groupField.append(groupLabel,group);
         syncAdd();
 
         add.addEventListener('click',()=>{
@@ -5484,6 +5948,7 @@
       }
 
       function renderGuests(){
+        document.querySelectorAll('.guest-group-menu-floating').forEach(menu=>menu.remove());
         const list=$('guest-list'); list.replaceChildren(); const r=calculate();
         state.guests.forEach((guest,index)=>{
           guest.items=Array.isArray(guest.items)?guest.items:[];guest.excludedCategories=Array.isArray(guest.excludedCategories)?guest.excludedCategories:[];
@@ -6218,6 +6683,13 @@
       });
 
 
+      $('patchnotes-start-button')?.addEventListener('click',e=>openPatchnotes(e.currentTarget));
+      $('patchnotes-close')?.addEventListener('click',closePatchnotes);
+      $('patchnotes-ok')?.addEventListener('click',closePatchnotes);
+      $('patchnotes-overlay')?.addEventListener('pointerdown',e=>{
+        if(e.target===$('patchnotes-overlay'))closePatchnotes();
+      });
+
       $('feedback-start-button')?.addEventListener('click',e=>openFeedback(e.currentTarget));
       $('feedback-close')?.addEventListener('click',closeFeedback);
       $('feedback-cancel')?.addEventListener('click',closeFeedback);
@@ -6231,6 +6703,14 @@
             item.setAttribute('aria-pressed',String(active));
           });
         });
+      });
+
+      $('feedback-name')?.addEventListener('input',e=>{
+        e.target.setAttribute('aria-invalid','false');
+        if($('feedback-status').classList.contains('error')){
+          $('feedback-status').textContent='';
+          $('feedback-status').className='feedback-status';
+        }
       });
 
       $('feedback-message')?.addEventListener('input',e=>{
@@ -6252,6 +6732,11 @@
       });
 
       document.addEventListener('keydown',e=>{
+        if(e.key==='Escape'&&!$('patchnotes-overlay').hidden){
+          e.preventDefault();
+          closePatchnotes();
+          return;
+        }
         if(e.key==='Escape'&&!$('feedback-overlay').hidden){
           e.preventDefault();
           closeFeedback();
