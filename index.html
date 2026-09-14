@@ -3370,6 +3370,210 @@
   }
 </style>
 
+
+<style id="feedback-v12">
+  .feedback-start-button{
+    color:var(--ink);
+  }
+  .feedback-start-button:hover{
+    color:var(--accent);
+  }
+
+  .feedback-dialog{
+    width:min(540px,calc(100vw - 32px));
+  }
+  .feedback-type-fieldset{
+    margin:18px 0 0;
+    padding:0;
+    border:0;
+  }
+  .feedback-type-fieldset legend,
+  .feedback-message-field>span:first-child{
+    display:block;
+    margin-bottom:8px;
+    color:var(--muted);
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:.015em;
+  }
+  .feedback-types{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:7px;
+  }
+  .feedback-type{
+    min-height:38px;
+    padding:0 10px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:var(--surface-2);
+    color:var(--muted);
+    font-size:11px;
+    font-weight:700;
+    transition:background .14s,border-color .14s,color .14s;
+  }
+  .feedback-type:hover{
+    color:var(--ink);
+    background:var(--surface-3);
+  }
+  .feedback-type.active{
+    color:var(--accent);
+    border-color:color-mix(in srgb,var(--accent) 36%,var(--line));
+    background:color-mix(in srgb,var(--accent) 9%,var(--surface-2));
+  }
+
+  .feedback-message-field{
+    position:relative;
+    display:block;
+    margin-top:16px;
+  }
+  .feedback-message-field textarea{
+    width:100%;
+    min-height:142px;
+    resize:vertical;
+    padding:13px 14px 28px;
+    border:1px solid var(--line);
+    border-radius:15px;
+    background:var(--surface-2);
+    color:var(--ink);
+    font:inherit;
+    font-size:12px;
+    line-height:1.55;
+    outline:0;
+  }
+  .feedback-message-field textarea::placeholder{
+    color:color-mix(in srgb,var(--muted) 72%,transparent);
+  }
+  .feedback-message-field textarea:focus{
+    border-color:color-mix(in srgb,var(--accent) 55%,var(--line));
+    box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 48%,transparent);
+  }
+  .feedback-message-field textarea[aria-invalid="true"]{
+    border-color:#d85a43;
+    box-shadow:inset 0 0 0 1px color-mix(in srgb,#d85a43 48%,transparent);
+  }
+  .feedback-counter{
+    position:absolute;
+    right:12px;
+    bottom:10px;
+    margin:0!important;
+    color:var(--muted);
+    font-size:9px!important;
+    font-weight:500!important;
+    pointer-events:none;
+  }
+  .feedback-counter b{font-weight:700}
+
+  .feedback-tech-note{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    margin-top:12px;
+    padding:10px 11px;
+    border-radius:12px;
+    background:var(--surface-2);
+    color:var(--muted);
+    font-size:10px;
+    line-height:1.45;
+  }
+  .feedback-tech-note .icon{
+    width:13px;
+    height:13px;
+    flex:0 0 13px;
+    margin-top:1px;
+    color:var(--accent);
+  }
+
+  .feedback-status{
+    min-height:18px;
+    margin-top:10px;
+    color:var(--muted);
+    font-size:10.5px;
+    line-height:1.4;
+  }
+  .feedback-status.error{color:#d85a43}
+  .feedback-status.success{color:#3b8d6b}
+
+  .feedback-footer{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:8px;
+    margin-top:5px;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+  }
+  .feedback-cancel,
+  .feedback-submit{
+    min-height:39px;
+    padding:0 17px;
+    border-radius:999px;
+    font-size:11px;
+    font-weight:750;
+  }
+  .feedback-cancel{
+    border:1px solid var(--line);
+    background:var(--surface-2);
+    color:var(--muted);
+  }
+  .feedback-cancel:hover{color:var(--ink)}
+  .feedback-submit{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    border:0;
+    background:var(--accent);
+    color:#fff;
+  }
+  .feedback-submit:hover{filter:brightness(.97)}
+  .feedback-submit:disabled{
+    opacity:.58;
+    cursor:wait;
+  }
+  .feedback-submit .icon{width:13px;height:13px}
+
+  @media(max-width:830px){
+    .feedback-start-button span{display:none!important}
+  }
+  @media(max-width:620px){
+    .feedback-types{grid-template-columns:1fr 1fr}
+    .feedback-dialog{width:100%}
+  }
+</style>
+
+
+<style id="feedback-project-note-v12">
+  .feedback-project-note{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin-top:13px;
+    padding:12px 13px;
+    border:1px solid color-mix(in srgb,var(--accent) 15%,var(--line));
+    border-radius:14px;
+    background:color-mix(in srgb,var(--accent) 5%,var(--surface-2));
+  }
+  .feedback-project-note-icon{
+    width:26px;
+    height:26px;
+    flex:0 0 26px;
+    display:grid;
+    place-items:center;
+    border-radius:9px;
+    background:color-mix(in srgb,var(--accent) 11%,transparent);
+    color:var(--accent);
+    font-size:11px;
+    line-height:1;
+  }
+  .feedback-project-note p{
+    margin:0;
+    color:var(--muted);
+    font-size:10.5px;
+    line-height:1.5;
+  }
+</style>
+
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;overflow:hidden">
@@ -3412,6 +3616,7 @@
       <symbol id="i-flower" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 10c-4-1-5-5-2-7 3 0 4 3 3 7M14 12c1-4 5-5 7-2 0 3-3 4-7 3M12 14c4 1 5 5 2 7-3 0-4-3-3-7M10 12c-1 4-5 5-7 2 0-3 3-4 7-3"/></symbol>
       <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></symbol>
       <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20 8.5C20 15 12 20 12 20S4 15 4 8.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 2.5Z"/></symbol>
+      <symbol id="i-message" viewBox="0 0 24 24"><path d="M5 5.5h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-7l-4.5 3v-3H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2Z"/><path d="M7.5 9.5h9M7.5 12.5h6"/></symbol>
       <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 6h13a2 2 0 0 1 2 2v10H4V6Z"/><path d="M4 9h16v6h-5a3 3 0 0 1 0-6h5M15 12h.01"/></symbol>
       <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3 1.4 4.1L17.5 8.5l-4.1 1.4L12 14l-1.4-4.1-4.1-1.4 4.1-1.4L12 3ZM19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14ZM5 15l.7 1.8 1.8.7-1.8.7L5 20l-.7-1.8-1.8-.7 1.8-.7L5 15Z"/></symbol>
       <symbol id="i-balloon" viewBox="0 0 24 24"><path d="M12 3a5 6 0 0 1 5 6c0 4-2.2 6.5-5 7-2.8-.5-5-3-5-7a5 6 0 0 1 5-6Z"/><path d="m10 16 2 2 2-2M12 18c0 2-2 2-2 4"/></symbol>
@@ -3457,6 +3662,7 @@
         <div class="save-state" id="save-state"><span class="save-dot"></span><span>Сохранено</span></div>
         <button class="help-trigger" type="button" data-help="topbar" aria-label="Как работает верхняя панель" title="Как работает этот блок"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg></button>
         <button class="tool-button demo-start-button" id="demo-start-button" type="button" title="Пройти короткое демо" aria-label="Пройти короткое демо"><svg class="icon"><use href="#i-play"/></svg><span>Демо</span></button>
+        <button class="tool-button feedback-start-button" id="feedback-start-button" type="button" title="Отправить обратную связь" aria-label="Отправить обратную связь"><svg class="icon"><use href="#i-message"/></svg><span>Фидбэк</span></button>
         <button class="tool-button" id="export-button" type="button" title="Экспортировать расчёт в Excel" aria-label="Экспортировать расчёт в Excel"><svg class="icon"><use href="#i-download"/></svg><span>Экспорт</span></button>
         <button class="tool-button" id="import-button" type="button" title="Импортировать расчёт из Excel" aria-label="Импортировать расчёт из Excel"><svg class="icon"><use href="#i-upload"/></svg><span>Импорт</span></button>
         <input id="import-file" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xlsx" hidden>
@@ -3640,13 +3846,65 @@
       <div class="help-dialog-footer"><button class="help-ok" id="help-ok" type="button">Понятно</button></div>
     </div>
   </div>
+  <div class="help-overlay feedback-overlay" id="feedback-overlay" hidden>
+    <section class="help-dialog feedback-dialog" role="dialog" aria-modal="true" aria-labelledby="feedback-title" aria-describedby="feedback-intro">
+      <div class="help-dialog-head">
+        <div class="help-dialog-heading">
+          <span class="help-dialog-icon"><svg class="icon" aria-hidden="true"><use href="#i-message"/></svg></span>
+          <div><span class="help-kicker">Обратная связь</span><h3 id="feedback-title">Помогите сделать лучше</h3></div>
+        </div>
+        <button class="help-close" id="feedback-close" type="button" aria-label="Закрыть обратную связь"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+      </div>
+
+      <p class="help-intro" id="feedback-intro">Что-то сломалось, оказалось непонятным или появилась идея? Напишите здесь.</p>
+
+      <div class="feedback-project-note">
+        <span class="feedback-project-note-icon">♥</span>
+        <p>Это пока тестовый проект, поэтому мне правда интересно читать ваши идеи и замечания. Если есть несколько мыслей, постарайтесь собрать их в одно сообщение — так ничего не потеряется и форма не будет забиваться одинаковыми запросами. Спасибо, что помогаете сделать «Повод собраться» лучше 🙂</p>
+      </div>
+
+      <form id="feedback-form" novalidate>
+        <fieldset class="feedback-type-fieldset">
+          <legend>Что хотите сообщить?</legend>
+          <div class="feedback-types" role="radiogroup" aria-label="Тип обратной связи">
+            <button class="feedback-type active" type="button" data-feedback-type="Ошибка" aria-pressed="true">Ошибка</button>
+            <button class="feedback-type" type="button" data-feedback-type="Непонятно" aria-pressed="false">Непонятно</button>
+            <button class="feedback-type" type="button" data-feedback-type="Идея" aria-pressed="false">Идея</button>
+            <button class="feedback-type" type="button" data-feedback-type="Другое" aria-pressed="false">Другое</button>
+          </div>
+        </fieldset>
+
+        <label class="feedback-message-field" for="feedback-message">
+          <span>Расскажите подробнее</span>
+          <textarea id="feedback-message" rows="6" maxlength="1800" placeholder="Например: в списке покупок непонятно, откуда появилась эта позиция…" required></textarea>
+          <span class="feedback-counter"><b id="feedback-count">0</b> / 1800</span>
+        </label>
+
+        <div class="feedback-tech-note">
+          <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+          <span>К сообщению приложится только техническая информация: раздел сайта, тема, браузер и размер окна. Данные праздника не отправляются.</span>
+        </div>
+
+        <div class="feedback-status" id="feedback-status" role="status" aria-live="polite"></div>
+
+        <div class="feedback-footer">
+          <button class="feedback-cancel" id="feedback-cancel" type="button">Отмена</button>
+          <button class="feedback-submit" id="feedback-submit" type="submit">
+            <span>Отправить</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-message"/></svg>
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
     'use strict';
     (() => {
       const HELP_CONTENT={
-        topbar:{title:'Верхняя панель',intro:'Здесь находятся служебные действия планировщика. Они не меняют саму логику расчёта, а помогают управлять данными и интерфейсом.',points:[['Автосохранение','Все изменения сохраняются локально в этом браузере. Рядом всегда видно время последнего сохранения.'],['Тема','Переключайте светлую и тёмную тему — выбранный вариант запоминается.'],['Экспорт и импорт','Экспорт сохраняет расчёт в XLSX, а импорт позволяет вернуть отредактированный файл обратно.'],['Очистка','Полностью сбрасывает текущий расчёт и возвращает исходные категории.']],important:'Данные автосохранения остаются только в текущем браузере. Для переноса на другой компьютер используйте Excel.'},
+        topbar:{title:'Верхняя панель',intro:'Здесь находятся служебные действия планировщика. Они не меняют саму логику расчёта, а помогают управлять данными и интерфейсом.',points:[['Автосохранение','Все изменения сохраняются локально в этом браузере. Рядом всегда видно время последнего сохранения.'],['Фидбэк','Сообщите об ошибке, непонятном месте или идее. Данные праздника не отправляются.'],['Тема','Переключайте светлую и тёмную тему — выбранный вариант запоминается.'],['Экспорт и импорт','Экспорт сохраняет расчёт в XLSX, а импорт позволяет вернуть отредактированный файл обратно.'],['Очистка','Полностью сбрасывает текущий расчёт и возвращает исходные категории.']],important:'Данные автосохранения остаются только в текущем браузере. Для переноса на другой компьютер используйте Excel.'},
         heading:{title:'О планировщике',intro:'«Повод собраться» помогает собрать в одном месте бюджет праздника, гостей, индивидуальные пожелания и итоговый список покупок.',points:[['Подарок по умолчанию','Сумма автоматически применяется к новым гостям. Для конкретного человека её можно изменить отдельно.'],['Один источник данных','Расходы задают общий план, гости уточняют состав, а покупки формируются из этих же данных.'],['План и факт','До праздника удобно планировать, после — фиксировать реальные траты и смотреть итог.']],important:'Подарок — это ожидаемый вклад одного гостя, а не обязательная сумма. Его можно менять в любой момент.'},
         overview:{title:'Обзор',intro:'Этот блок быстро показывает состояние всего праздника: сколько планируется потратить, сколько ожидается подарков и сходится ли бюджет.',points:[['До праздника','Показывается плановая стоимость расходов.'],['После праздника','Используются фактические суммы там, где они заполнены; иначе остаётся план.'],['Окупаемость','Потенциальные подарки минус текущие расходы. Положительное значение означает запас, отрицательное — сколько не хватает.'],['Точка окупаемости','Показывает, сколько гостей нужно при текущем подарке по умолчанию, чтобы покрыть расходы.']],important:'Гости со статусом «Под вопросом» входят в потенциальные подарки, но не в гарантированные.'},
         expenses:{title:'Расходы',intro:'Здесь задаётся общий объём и стоимость каждой категории. Категории с включённой закупкой дополнительно распределяются между гостями.',points:[['Иконка','Нажмите на пиктограмму слева от названия категории и выберите подходящую из каталога.'],['Общий объём','Укажите, сколько всего требуется по категории. Это верхний лимит для её распределения.'],['Закупка','Включите сумку покупок у категории, если её нужно распределять между гостями и включать в список покупок.'],['Расчётная доля','Она считается автоматически, но её можно изменить вручную — тогда общий объём пересчитается в обратную сторону.'],['Конкретные позиции','Номенклатура гостей занимает часть общего объёма. Она не прибавляется сверху.'],['Факт','Для закупочных категорий фактическую сумму можно указать отдельно по каждой строке.']],important:'Если индивидуальные позиции превысят общий объём категории, планировщик покажет предупреждение — автоматически скрывать превышение он не будет.'},
@@ -4193,6 +4451,139 @@
       let helpReturnFocus=null;
       function openHelp(key,trigger){const data=HELP_CONTENT[key];if(!data)return;const overlay=$('help-overlay'),points=$('help-points'),important=$('help-important');helpReturnFocus=trigger||document.activeElement;$('help-dialog-title').textContent=data.title;$('help-dialog-intro').textContent=data.intro;points.replaceChildren();data.points.forEach((point,index)=>{const row=document.createElement('div');row.className='help-point';const titleRow=document.createElement('div');titleRow.className='help-point-title-row';const number=document.createElement('span');number.className='help-point-number';number.textContent=String(index+1).padStart(2,'0');const strong=document.createElement('strong');strong.textContent=point[0];titleRow.append(number,strong);const description=document.createElement('span');description.className='help-point-description';description.textContent=point[1];row.append(titleRow,description);points.append(row);});if(data.important){important.hidden=false;important.querySelector('span').textContent=data.important;}else important.hidden=true;overlay.hidden=false;document.body.classList.add('help-open');requestAnimationFrame(()=>$('help-close').focus());}
       function closeHelp(){const overlay=$('help-overlay');if(overlay.hidden)return;overlay.hidden=true;document.body.classList.remove('help-open');const target=helpReturnFocus;helpReturnFocus=null;if(target&&typeof target.focus==='function')requestAnimationFrame(()=>target.focus());}
+
+      const FEEDBACK_ENDPOINT='https://formspree.io/f/xppzgook';
+      let feedbackType='Ошибка',feedbackReturnFocus=null,feedbackSending=false;
+
+      function openFeedback(trigger){
+        if(feedbackSending)return;
+        if(typeof closeHelp==='function')closeHelp();
+        if(typeof closeIconPicker==='function')closeIconPicker();
+        if(typeof closeUnitPopover==='function')closeUnitPopover(false);
+        if(typeof closeGuestUnitPopover==='function')closeGuestUnitPopover(false);
+        if(typeof setMobileMenu==='function')setMobileMenu(false);
+
+        feedbackReturnFocus=trigger||document.activeElement;
+        feedbackType='Ошибка';
+        document.querySelectorAll('.feedback-type').forEach(btn=>{
+          const active=btn.dataset.feedbackType===feedbackType;
+          btn.classList.toggle('active',active);
+          btn.setAttribute('aria-pressed',String(active));
+        });
+
+        const message=$('feedback-message');
+        message.value='';
+        message.setAttribute('aria-invalid','false');
+        $('feedback-count').textContent='0';
+        $('feedback-status').textContent='';
+        $('feedback-status').className='feedback-status';
+
+        $('feedback-overlay').hidden=false;
+        document.body.classList.add('help-open');
+        requestAnimationFrame(()=>message.focus());
+      }
+
+      function closeFeedback(){
+        if(feedbackSending)return;
+        const overlay=$('feedback-overlay');
+        if(overlay.hidden)return;
+        overlay.hidden=true;
+        document.body.classList.remove('help-open');
+        const target=feedbackReturnFocus;
+        feedbackReturnFocus=null;
+        if(target&&typeof target.focus==='function')requestAnimationFrame(()=>target.focus());
+      }
+
+      function feedbackTechContext(){
+        const ua=navigator.userAgent||'';
+        return {
+          section:state.uiTab==='shopping'?'Покупки':'План',
+          theme:state.theme==='dark'?'Тёмная':'Светлая',
+          viewport:window.innerWidth+'×'+window.innerHeight,
+          browser:ua.slice(0,500),
+          language:navigator.language||'',
+          app_build:'v12-feedback',
+          state_schema:String(state.version||11),
+          page:location.origin&&location.origin!=='null'
+            ?location.origin+location.pathname
+            :location.pathname||'local'
+        };
+      }
+
+      async function submitFeedback(){
+        if(feedbackSending)return;
+        const messageEl=$('feedback-message'),
+          message=messageEl.value.trim(),
+          status=$('feedback-status');
+
+        if(message.length<5){
+          messageEl.setAttribute('aria-invalid','true');
+          status.textContent='Напишите хотя бы несколько слов.';
+          status.className='feedback-status error';
+          messageEl.focus();
+          return;
+        }
+
+        messageEl.setAttribute('aria-invalid','false');
+        feedbackSending=true;
+        $('feedback-submit').disabled=true;
+        $('feedback-submit').querySelector('span').textContent='Отправляем…';
+        status.textContent='';
+        status.className='feedback-status';
+
+        const tech=feedbackTechContext(),
+          data=new FormData();
+
+        data.append('_subject','Повод собраться · '+feedbackType);
+        data.append('type',feedbackType);
+        data.append('message',message);
+        data.append('section',tech.section);
+        data.append('theme',tech.theme);
+        data.append('viewport',tech.viewport);
+        data.append('browser',tech.browser);
+        data.append('language',tech.language);
+        data.append('app_build',tech.app_build);
+        data.append('state_schema',tech.state_schema);
+        data.append('page',tech.page);
+
+        try{
+          const response=await fetch(FEEDBACK_ENDPOINT,{
+            method:'POST',
+            body:data,
+            headers:{'Accept':'application/json'}
+          });
+
+          if(!response.ok){
+            let reason='';
+            try{
+              const result=await response.json();
+              reason=result?.errors?.map(e=>e.message).filter(Boolean).join('; ')||'';
+            }catch(_){}
+            throw new Error(reason||'HTTP '+response.status);
+          }
+
+          status.textContent='Спасибо! Отзыв отправлен.';
+          status.className='feedback-status success';
+          messageEl.value='';
+          $('feedback-count').textContent='0';
+          toast('Спасибо! Фидбэк отправлен');
+          setTimeout(()=>{
+            feedbackSending=false;
+            $('feedback-submit').disabled=false;
+            $('feedback-submit').querySelector('span').textContent='Отправить';
+            closeFeedback();
+          },900);
+          return;
+        }catch(err){
+          console.error('Feedback error',err);
+          status.textContent='Не удалось отправить. Проверьте интернет и попробуйте ещё раз.';
+          status.className='feedback-status error';
+        }
+
+        feedbackSending=false;
+        $('feedback-submit').disabled=false;
+        $('feedback-submit').querySelector('span').textContent='Отправить';
+      }
 
       function guestExcluded(guest,categoryId){return Array.isArray(guest.excludedCategories)&&guest.excludedCategories.includes(categoryId);}
       function setGuestCategoryExcluded(guest,categoryId,excluded){
@@ -5826,7 +6217,48 @@
         saveState();
       });
 
-$('theme-button').addEventListener('click',()=>{state.theme=state.theme==='dark'?'light':'dark';applyTheme();update(false);saveState();});
+
+      $('feedback-start-button')?.addEventListener('click',e=>openFeedback(e.currentTarget));
+      $('feedback-close')?.addEventListener('click',closeFeedback);
+      $('feedback-cancel')?.addEventListener('click',closeFeedback);
+
+      document.querySelectorAll('.feedback-type').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          feedbackType=btn.dataset.feedbackType||'Другое';
+          document.querySelectorAll('.feedback-type').forEach(item=>{
+            const active=item===btn;
+            item.classList.toggle('active',active);
+            item.setAttribute('aria-pressed',String(active));
+          });
+        });
+      });
+
+      $('feedback-message')?.addEventListener('input',e=>{
+        $('feedback-count').textContent=String(e.target.value.length);
+        e.target.setAttribute('aria-invalid','false');
+        if($('feedback-status').classList.contains('error')){
+          $('feedback-status').textContent='';
+          $('feedback-status').className='feedback-status';
+        }
+      });
+
+      $('feedback-form')?.addEventListener('submit',e=>{
+        e.preventDefault();
+        submitFeedback();
+      });
+
+      $('feedback-overlay')?.addEventListener('pointerdown',e=>{
+        if(e.target===$('feedback-overlay'))closeFeedback();
+      });
+
+      document.addEventListener('keydown',e=>{
+        if(e.key==='Escape'&&!$('feedback-overlay').hidden){
+          e.preventDefault();
+          closeFeedback();
+        }
+      });
+
+      $('theme-button').addEventListener('click',()=>{state.theme=state.theme==='dark'?'light':'dark';applyTheme();update(false);saveState();});
       $('guest-delete-mode')?.addEventListener('click',()=>{if(!state.guests.length)return;guestDeleteMode=!guestDeleteMode;syncGuestDeleteMode();toast(guestDeleteMode?'Режим удаления включён':'Режим удаления выключен');});
       $('expense-delete-mode')?.addEventListener('click',()=>{if(!state.expenses.some(e=>!isDynamicExpense(e)))return;expenseDeleteMode=!expenseDeleteMode;syncExpenseDeleteMode();toast(expenseDeleteMode?'Режим удаления расходов включён':'Режим удаления расходов выключен');});
 
