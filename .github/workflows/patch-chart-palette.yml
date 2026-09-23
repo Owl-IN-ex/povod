@@ -65,18 +65,18 @@ jobs:
           html = html.replace('Текущая сборка · 0.10.1 beta', 'Текущая сборка · 0.10.2 beta', 1)
           html = html.replace("const APP_VERSION='0.10.1-beta'", "const APP_VERSION='0.10.2-beta'", 1)
 
-          anchor = '''        <div class="patchnotes-item">
-              <span class="patchnotes-dot"></span>
-              <p><strong>Выравнивание покупок на мобильном</strong><br>Количество «Нужно», поле «Куплено» и «Осталось» теперь стоят строго по центру своих колонок.</p>
-            </div>'''
-          note = anchor + '''
-            <div class="patchnotes-item">
-              <span class="patchnotes-dot"></span>
-              <p><strong>Контрастнее диаграмма расходов</strong><br>Цвета категорий стали заметно различаться по оттенку и яркости, чтобы сегменты и легенду было легче читать.</p>
-            </div>'''
-          if anchor not in html:
-              raise SystemExit('Patchnote anchor not found')
-          html = html.replace(anchor, note, 1)
+          marker = '''        <div class="patchnotes-item">
+          <span class="patchnotes-dot"></span>
+          <p><strong>Выравнивание покупок на мобильном</strong><br>Количество «Нужно», поле «Куплено» и «Осталось» теперь стоят строго по центру своих колонок.</p>
+        </div>'''
+          note = '''
+        <div class="patchnotes-item">
+          <span class="patchnotes-dot"></span>
+          <p><strong>Контрастнее диаграмма расходов</strong><br>Цвета категорий стали заметно различаться по оттенку и яркости, чтобы сегменты и легенду было легче читать.</p>
+        </div>'''
+          if marker not in html:
+              raise SystemExit('Patchnote marker not found')
+          html = html.replace(marker, marker + note, 1)
 
           p.write_text(html, encoding='utf-8')
           PY
